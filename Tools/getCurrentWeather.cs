@@ -24,7 +24,7 @@ class getCurrentWeatherTool : IFunction
         functionJson = IFunction.BuildFunctionJson(this);
     }
 
-    public string Call(string args)
+    public string Call(in string args)
     {
         var argsJson = JsonSerializer.Deserialize<JsonElement>(args);
         var p_location = argsJson.GetProperty(nameof(location)).GetString();

@@ -10,7 +10,9 @@ class Program
 
         // 创建带有工具定义的历史记录
         var historyList = new HistoryList();
-        historyList.AddUser("这是一个工具调用测试，请测试所有的工具调用");
+        historyList.AddUser("Hello world! test every tool");
+
+        Console.WriteLine(historyList.ToJsonString());
 
         // 定义工具
         var toolsList = new ToolsList();

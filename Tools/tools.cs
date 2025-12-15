@@ -76,7 +76,7 @@ public interface IFunction
         return JsonSerializer.Serialize(dic, new JsonSerializerOptions { WriteIndented = true });
     }
 
-    public string Call(string argsJson);
+    public string Call(in string argsJson);
 
 };
 
@@ -102,7 +102,7 @@ public class ToolsList
         return "[" + string.Join(",", toolList) + "]";
     }
 
-    public Dictionary<string, string> CallTools(Message message)
+    public Dictionary<string, string> CallTools(in Message message)
     {
         var results = new Dictionary<string, string>();
         if (message.tool_calls == null) throw new ArgumentException("message not contain tool_calls");

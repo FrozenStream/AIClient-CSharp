@@ -41,7 +41,7 @@ class RecommendOutfit : IFunction
         functionJson = IFunction.BuildFunctionJson(this);
     }
 
-    public string Call(string args)
+    public string Call(in string args)
     {
         var argsJson = JsonSerializer.Deserialize<JsonElement>(args);
         var p_weather = argsJson.GetProperty(nameof(weather)).GetString();

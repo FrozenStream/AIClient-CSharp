@@ -17,7 +17,7 @@ class getTimeTool : IFunction
         functionJson = IFunction.BuildFunctionJson(this);
     }
 
-    public string Call(string args)
+    public string Call(in string args)
     {
         var argsJson = JsonSerializer.Deserialize<JsonElement>(args);
         return $"The current time! {argsJson}";
