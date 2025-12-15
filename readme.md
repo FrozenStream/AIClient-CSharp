@@ -3,6 +3,8 @@
 一个用于与AI大语言模型API交互的.NET库，支持函数调用（工具调用）功能。
 An AI client library for .NET that interacts with large language model APIs and supports function calling (tool calling).
 
+> ⚠️ 注意：本文档由AI辅助生成 / Note: This document is AI-assisted generated
+
 ## 功能特点 / Features
 
 - 与OpenAI兼容的API接口 / OpenAI-compatible API interface
