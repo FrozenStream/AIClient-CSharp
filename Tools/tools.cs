@@ -114,7 +114,7 @@ public class ToolsList
             Console.WriteLine($"工具调用内容: {toolCall.function.arguments}");
             if (tools.TryGetValue(toolCall.function.name, out IFunction? tool))
             {
-                results.Add(toolCall.function.name, tool.Call(toolCall.function.arguments));
+                results.Add(toolCall.Id, tool.Call(toolCall.function.arguments));
             }
         }
         return results;

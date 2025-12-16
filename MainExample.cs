@@ -9,8 +9,8 @@ class Program
         Console.WriteLine("Testing AIClient...");
 
         // 创建带有工具定义的历史记录
-        var historyList = new HistoryList();
-        historyList.AddUser("Hello world! test every tool");
+        var historyList = new HistoryList("test.json");
+        historyList.AddUser("Hello world! does every tool work well?");
 
         Console.WriteLine(historyList.ToJsonString());
 
@@ -31,6 +31,8 @@ class Program
         Console.WriteLine("Calling CompleteChat method with tools...");
         ChatResult result = await client.CompleteChat(historyList.ToJsonString());
 
+        historyList.AddAssistant(result.choices[0].message);
+
         Console.WriteLine($"{JsonSerializer.Serialize(result)}");
 
         Console.WriteLine(result.choices[0].message.content ?? "No content found");
@@ -41,6 +43,7 @@ class Program
             var toolResults = toolsList.CallTools(result.choices[0].message);
             foreach (var toolResult in toolResults)
             {
+                historyList.AddToolResult(toolResult.Value, toolResult.Key);
                 Console.WriteLine($"工具 {toolResult.Key} 返回: {toolResult.Value}");
             }
         }
@@ -51,6 +54,8 @@ class Program
 
         Console.WriteLine("\nPress any key to exit...");
         Console.ReadKey();
+
+        historyList.SaveHistory();
     }
 
 
